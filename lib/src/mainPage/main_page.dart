@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:personal_app/src/firstPage/first_page.dart';
+import 'package:personal_app/src/secondPage/second_page.dart';
 
 import 'components/arrow.dart';
 
@@ -8,7 +10,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.black,
         body: Stack(
-          children: <Widget>[MoveArrows()],
+          children: <Widget>[PagesChangler(), MoveArrows()],
         ));
   }
 }
@@ -40,6 +42,9 @@ class MoveArrows extends StatelessWidget {
 class PagesChangler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PageView(
+      scrollDirection: Axis.vertical,
+      children: <Widget>[FirstPage(), SecondPage()],
+    );
   }
 }
