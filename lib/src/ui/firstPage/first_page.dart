@@ -54,7 +54,8 @@ Widget _background() {
     width: double.infinity,
     decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/back1.jpg'), fit: BoxFit.fill)),
+            image: AssetImage('assets/images/back1-minmin.jpg'),
+            fit: BoxFit.fill)),
     child: Container(
       color: Colors.black54,
     ),

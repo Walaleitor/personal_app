@@ -40,7 +40,7 @@ class _Body extends StatelessWidget {
             BubbleBox(
               color: Color(0xC7EFB599),
               titleText: 'Frontend',
-              descriptionText: 'Me siento como desarrollando con React',
+              descriptionText: 'Me siento comodo desarrollando con React',
             ),
             SizedBox(
               height: 20.0,
@@ -65,7 +65,7 @@ Widget _background() {
     decoration: BoxDecoration(
         image: DecorationImage(
             alignment: Alignment(0.8, 0),
-            image: AssetImage('assets/images/back2.jpg'),
+            image: AssetImage('assets/images/back2-minmin.jpg'),
             fit: BoxFit.cover)),
     child: Container(
       color: Colors.black45,

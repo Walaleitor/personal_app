@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_app/src/ui/firstPage/first_page.dart';
 import 'package:personal_app/src/ui/secondPage/second_page.dart';
+import 'package:personal_app/src/ui/thirdPage/third_page.dart';
 
 import 'components/arrow.dart';
 
@@ -44,7 +45,7 @@ class PagesChangler extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView(
       scrollDirection: Axis.vertical,
-      children: <Widget>[FirstPage(), SecondPage()],
+      children: <Widget>[FirstPage(), SecondPage(), ThirdPage()],
     );
   }
 }
