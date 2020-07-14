@@ -37,7 +37,7 @@ class _Body extends StatelessWidget {
           height: 30.0,
         ),
         Text(
-          'const saludo = () => { \n  console.log("Hello World!")\n}',
+          'const saludo = () => { \n  console.log("Hello friend!")\n}',
           style: GoogleFonts.firaCode(
             textStyle: TextStyle(color: Colors.white, fontSize: 18.0),
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_app/src/ui/commons/common_body.dart';
+import 'package:personal_app/src/ui/thirdPage/components/big_icon.dart';
+import 'package:personal_app/src/ui/thirdPage/components/small_icon.dart';
 
 class ThirdPage extends StatelessWidget {
   @override
@@ -19,7 +21,31 @@ class _Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _text('Aqui puedes encontrar algunos de mis proyectos')
+            _text('Aqui puedes encontrar algunos de mis proyectos'),
+            SizedBox(
+              height: 10.0,
+            ),
+            BigIcon(image: 'assets/images/github.png'),
+            SizedBox(
+              height: 10.0,
+            ),
+            BigIcon(image: 'assets/images/gitlab.png'),
+            SizedBox(
+              height: 30.0,
+            ),
+            _text('Tambien me puedes encontrar en mis redes sociales'),
+            SizedBox(
+              height: 20.0,
+            ),
+            _iconRow(),
+            SizedBox(
+              height: 20.0,
+            ),
+            _text('O simplemente puedes enviarme un email'),
+            SizedBox(
+              height: 10.0,
+            ),
+            _emailText()
           ],
         ),
       ),
@@ -50,5 +76,37 @@ Widget _text(String text) {
           fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
     ),
     textAlign: TextAlign.center,
+  );
+}
+
+Widget _iconRow() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      SmallIcon(image: 'assets/images/icon-ig.png'),
+      SizedBox(
+        width: 12.0,
+      ),
+      SmallIcon(image: 'assets/images/icon-fb.png'),
+      SizedBox(
+        width: 12.0,
+      ),
+      SmallIcon(image: 'assets/images/icon-twitter.png'),
+      SizedBox(
+        width: 12.0,
+      ),
+      SmallIcon(image: 'assets/images/icon-linkedin.png'),
+    ],
+  );
+}
+
+Widget _emailText() {
+  return Text(
+    'sebanicosp@gmail.com',
+    style: GoogleFonts.cabin(
+        fontSize: 20.0,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        decoration: TextDecoration.underline),
   );
 }
