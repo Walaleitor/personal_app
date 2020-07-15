@@ -36,7 +36,7 @@ class _ArrowPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = new Paint()
       ..color = Colors.white54
-      ..strokeWidth = 7.5
+      ..strokeWidth = 8
       ..style = PaintingStyle.stroke;
 
     final pathDown = new Path();

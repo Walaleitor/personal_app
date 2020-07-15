@@ -14,37 +14,67 @@ class FirstPage extends StatelessWidget {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends StatefulWidget {
+  @override
+  __BodyState createState() => __BodyState();
+}
+
+class __BodyState extends State<_Body> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> opacity;
+
+  @override
+  void initState() {
+    controller = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
+
+    opacity = new Tween(begin: 0.0, end: 1.0).animate(controller);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CommonBody(
-        child: Center(
-            child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        _firstText(),
-        SizedBox(
-          height: 30.0,
-        ),
-        CircularAvatar(
-          diameter: 150.0,
-        ),
-        SizedBox(
-          height: 50.0,
-        ),
-        _secondText(),
-        SizedBox(
-          height: 30.0,
-        ),
-        Text(
-          'const saludo = () => { \n  console.log("Hello friend!")\n}',
-          style: GoogleFonts.firaCode(
-            textStyle: TextStyle(color: Colors.white, fontSize: 18.0),
+    controller.forward();
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (BuildContext context, Widget child) {
+        return Opacity(opacity: opacity.value, child: child);
+      },
+      child: CommonBody(
+          child: Center(
+              child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _firstText(),
+          SizedBox(
+            height: 30.0,
           ),
-          textAlign: TextAlign.start,
-        )
-      ],
-    )));
+          CircularAvatar(
+            diameter: 150.0,
+          ),
+          SizedBox(
+            height: 50.0,
+          ),
+          _secondText(),
+          SizedBox(
+            height: 30.0,
+          ),
+          Text(
+            'const saludo = () => { \n  console.log("Hello friend!")\n}',
+            style: GoogleFonts.firaCode(
+              textStyle: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+            textAlign: TextAlign.start,
+          )
+        ],
+      ))),
+    );
   }
 }
 

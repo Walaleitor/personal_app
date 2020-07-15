@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_app/src/data/url_pages.dart';
 import 'package:personal_app/src/ui/commons/common_body.dart';
+import 'package:personal_app/src/ui/commons/utils.dart';
 import 'package:personal_app/src/ui/thirdPage/components/big_icon.dart';
 import 'package:personal_app/src/ui/thirdPage/components/small_icon.dart';
 
@@ -25,11 +27,21 @@ class _Body extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            BigIcon(image: 'assets/images/github.png'),
+            BigIcon(
+              image: 'assets/images/github.png',
+              onTap: () {
+                launchURL(UrlPages.github);
+              },
+            ),
             SizedBox(
               height: 10.0,
             ),
-            BigIcon(image: 'assets/images/gitlab.png'),
+            BigIcon(
+              image: 'assets/images/gitlab.png',
+              onTap: () {
+                launchURL(UrlPages.gitlab);
+              },
+            ),
             SizedBox(
               height: 30.0,
             ),
@@ -83,19 +95,35 @@ Widget _iconRow() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      SmallIcon(image: 'assets/images/icon-ig.png'),
+      SmallIcon(
+          image: 'assets/images/icon-ig.png',
+          onTap: () {
+            launchURL(UrlPages.instagram);
+          }),
       SizedBox(
         width: 12.0,
       ),
-      SmallIcon(image: 'assets/images/icon-fb.png'),
+      SmallIcon(
+          image: 'assets/images/icon-fb.png',
+          onTap: () {
+            launchURL(UrlPages.facebook);
+          }),
       SizedBox(
         width: 12.0,
       ),
-      SmallIcon(image: 'assets/images/icon-twitter.png'),
+      SmallIcon(
+          image: 'assets/images/icon-twitter.png',
+          onTap: () {
+            launchURL(UrlPages.twitter);
+          }),
       SizedBox(
         width: 12.0,
       ),
-      SmallIcon(image: 'assets/images/icon-linkedin.png'),
+      SmallIcon(
+          image: 'assets/images/icon-linkedin.png',
+          onTap: () {
+            launchURL(UrlPages.linkedin);
+          }),
     ],
   );
 }
