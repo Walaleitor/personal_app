@@ -15,53 +15,95 @@ class ThirdPage extends StatelessWidget {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends StatefulWidget {
+  @override
+  __BodyState createState() => __BodyState();
+}
+
+class __BodyState extends State<_Body> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> opacity;
+  Animation<double> translate;
+
+  @override
+  void initState() {
+    controller = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 2000));
+
+    opacity = new Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: controller, curve: Interval(0.0, 0.5, curve: Curves.ease)));
+
+    translate = new Tween(begin: 10.0, end: 0.0).animate(CurvedAnimation(
+        parent: controller, curve: Interval(0.5, 1.0, curve: Curves.ease)));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CommonBody(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _text('Aqui puedes encontrar algunos de mis proyectos'),
-            SizedBox(
-              height: 10.0,
+    controller.forward();
+    return AnimatedBuilder(
+        animation: controller,
+        builder: (BuildContext context, Widget child) {
+          return CommonBody(
+            child: Center(
+              child: Opacity(
+                opacity: opacity.value,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _text('Aqui puedes encontrar algunos de mis proyectos'),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Align(
+                      alignment: Alignment(translate.value, 0),
+                      child: BigIcon(
+                        image: 'assets/images/github.png',
+                        onTap: () {
+                          launchURL(UrlPages.github);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Align(
+                      alignment: Alignment(-(translate.value), 0),
+                      child: BigIcon(
+                        image: 'assets/images/gitlab.png',
+                        onTap: () {
+                          launchURL(UrlPages.gitlab);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    _text('Tambien me puedes encontrar en mis redes sociales'),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    _iconRow(),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    _text('O simplemente puedes enviarme un email'),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    _emailText()
+                  ],
+                ),
+              ),
             ),
-            BigIcon(
-              image: 'assets/images/github.png',
-              onTap: () {
-                launchURL(UrlPages.github);
-              },
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            BigIcon(
-              image: 'assets/images/gitlab.png',
-              onTap: () {
-                launchURL(UrlPages.gitlab);
-              },
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            _text('Tambien me puedes encontrar en mis redes sociales'),
-            SizedBox(
-              height: 20.0,
-            ),
-            _iconRow(),
-            SizedBox(
-              height: 20.0,
-            ),
-            _text('O simplemente puedes enviarme un email'),
-            SizedBox(
-              height: 10.0,
-            ),
-            _emailText()
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }
 
