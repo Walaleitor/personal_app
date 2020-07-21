@@ -34,7 +34,8 @@ class __BodyState extends State<_Body> with SingleTickerProviderStateMixin {
         parent: controller, curve: Interval(0.0, 0.5, curve: Curves.ease)));
 
     translate = new Tween(begin: 10.0, end: 0.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.5, 1.0, curve: Curves.ease)));
+        parent: controller,
+        curve: Interval(0.5, 1.0, curve: Curves.elasticOut)));
     super.initState();
   }
 
